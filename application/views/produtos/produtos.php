@@ -48,9 +48,9 @@
                     <tr>
                       <th style="width: 10px">#</th>
                       <th>Código</th>
+                       <th>Descrição</th>
                       <th>Preço à vista</th>
-                      <th>Preço a prazo</th>
-                      <th>Descrição</th>
+                      <th>Preço a prazo</th>                     
                       <th>Status</th>
                       <th style="width: 140px">Ações</th>
                     </tr>
@@ -74,24 +74,28 @@
                         <?=$produto['id']?>
                       </td>
                       <td>
-                        <?=$produto['preco_vista']?>
-                      </td>
-                       <td>
-                        <?=$produto['preco_prazo']?>
+                        <?=$produto['codigo_barras']?>
                       </td>
                        <td>
                         <?=$produto['descricao']?>
                       </td>
                       <td>
-                        <span <?=$produto['status']==1 ? 'class="label label-success">Disponível</span>' :
-                          'class="label label-danger">Ocupado</span>' ?>
+                        <?="R$ ".str_replace(".", ",", $produto['preco_vista'])?>
+                      </td>
+                       <td>
+                        <?="R$ ".str_replace(".", ",",$produto['preco_prazo'])?>
+                      </td>
+                      
+                      <td>
+                        <span <?=$produto['status']==1 ? 'class="label label-success">Ativo</span>' :
+                          'class="label label-danger">Inativo</span>' ?>
                       </td>                                          
                       <td>
                         <a href="<?=base_url('produtos/editar/'.$produto['id'])?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>
                           Editar</a>
 
                         <a href="#" data-toggle="modal" data-target="#delete-modal" data-customer="<?php echo $produto['id'];?>"
-                          data-rota="<?php echo base_url('exluir-produto/');?>" class="btn btn-danger btn-xs">
+                          data-rota="<?php echo base_url('produto/excluir/');?>" class="btn btn-danger btn-xs">
                           <i class="fa fa-trash"></i> Excluir</a>
                       </td>
 

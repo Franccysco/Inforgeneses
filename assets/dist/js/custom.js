@@ -8,7 +8,7 @@ $('#delete-modal').on('show.bs.modal', function (event) {
     modal.find('#confirm').attr('href', rota + id);
 })
 
-/**	 * Verifica os campos de edeição da senha	 */
+/**	 * Verifica os campos de edição da senha	 */
 
 $(document).ready(function () {
     $("#nova_senha").keyup(checkPasswordMatch);

@@ -60,7 +60,10 @@ $route['logout'] = 'login/logout';
 //Produtos
 $route['produtos'] = 'produto';
 $route['produtos/cadastro'] = 'produto/cadastro';
-$route['produtos/editar'] = 'produto/editar';
+$route['produtos/editar/(:num)'] = 'produto/editar/$1';
+$route['produto/salvar'] = 'produto/salvar';
+$route['produto/atualizar'] = 'produto/atualizar';
+$route['produto/excluir/(:num)'] = 'produto/excluir/$1';
 
 
 //Usuários
@@ -76,5 +79,9 @@ $route['usuario/atualizaSenha'] = 'usuario/atualizaSenha';
 //Clientes
 $route['clientes'] = 'cliente';
 $route['clientes/cadastro'] = 'cliente/cadastro';
-$route['clientes/editar'] = 'cliente/editar';
+$route['clientes/editar/(:num)'] = 'cliente/editar/$1';
+$route['cliente/salvar'] = 'cliente/salvar';
+$route['cliente/atualizar'] = 'cliente/atualizar';
+$route['cliente/excluir/(:num)'] = 'cliente/excluir/$1';
+
 

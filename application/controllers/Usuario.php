@@ -11,7 +11,7 @@ class Usuario extends MY_Controller
         // Titulo da página
         $dados['titulo'] = 'Usuarios';
         // Recupera os usuarios através do model
-        $dados['usuarios'] = $this->usuario_model->GetAll();
+        $dados['usuarios'] = $this->usuario_model->getAll();
         // Chama a pagina de usuarios enviando um array de dados a serem exibidos
         $this->render_page('usuarios/usuarios', $dados);
 
@@ -47,7 +47,7 @@ class Usuario extends MY_Controller
             $usuario['status'] = $this->input->post('status');
 
             // Insere os dados no banco recuperando o status dessa operação
-            $status = $this->usuario_model->Inserir($usuario);
+            $status = $this->usuario_model->inserir($usuario);
             // Checa o status da operação gravando a mensagem na seção
             if (!$status) {
                 $this->session->set_flashdata('error', 'Não foi possível inserir o usuario.');
@@ -78,7 +78,7 @@ class Usuario extends MY_Controller
         }
 
         // Recupera os dados do registro a ser editado
-        $dados['usuario_ed'] = $this->usuario_model->GetById($id);
+        $dados['usuario_ed'] = $this->usuario_model->getById($id);
 
         // Titulo da página
         $dados['titulo'] = 'Usuarios-editar';

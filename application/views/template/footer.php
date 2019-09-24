@@ -2,7 +2,7 @@
     <div class="pull-right hidden-xs">
         <b>Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2019 <a href="#" target="_blank">Inforgeneses</a>.</strong>
+    <strong>Copyright &copy; 2019 <a href="#">Inforgeneses</a>.</strong>
     Todos
     os Direitos Reservados.
 </footer>
@@ -15,7 +15,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4>Exluir dado! <i class="fa fa-trash"></i></h4>
+                <h4>Excluir dado! <i class="fa fa-trash"></i></h4>
             </div>
             <div class="modal-body">
                 <p>Deseja realmente excluir?</p>
@@ -59,6 +59,7 @@
 
 <!-- jQuery 3 -->
 <script src="<?=base_url('assets/bower_components/jquery/dist/jquery.min.js')?>"></script>
+<script src="<?=base_url('assets/dist/js/jquery.mask.min.js')?>"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?=base_url('assets/bower_components/bootstrap/dist/js/bootstrap.min.js')?>"></script>
 <!-- Select2 -->
@@ -85,9 +86,11 @@
 <script src="<?=base_url('assets/dist/js/custom.js')?>"></script>
 
 
+
 <!-- DataTables -->
 <script src="<?=base_url('assets/')?>bower_components/datatables/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?=base_url('assets/')?>bower_components/datatables/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="<?=base_url('assets/')?>bower_components/datatables/datatables.net-bs/js/dataTables.bootstrap.min.js">
+</script>
 <script src="<?=base_url('assets/')?>bower_components/datatables/buttons-1.5.4/js/dataTables.buttons.min.js"></script>
 <!-- <script src="<=base_url('assets/')?>bower_components/datatables/buttons-1.5.4/js/buttons.flash.min.js"></script> -->
 <script src="<?=base_url('assets/')?>bower_components/datatables/buttons-1.5.4/js/buttons.html5.min.js"></script>
@@ -131,7 +134,7 @@
         })
 
 
-        
+
     })
 </script>
 
@@ -161,6 +164,21 @@
         checkboxClass: 'icheckbox_flat-green',
         radioClass: 'iradio_flat-green'
     })
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.date').mask('11/11/1111');
+       
+        $('.date_time').mask('00/00/0000 00:00:00');
+        $('.rg').mask('00.000.000-0');        
+        $('.cpf').mask('000.000.000-00', {
+            reverse: true
+        });
+        $('.money').mask('000.000.000.000.000,00', {
+            reverse: true
+        });
+    });
 </script>
 
 

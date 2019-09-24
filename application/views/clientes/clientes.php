@@ -51,6 +51,7 @@
                       <th>Nome</th>
                       <th>Endereço</th>
                       <th>Cidade</th>
+                      <th>Status</th>
                       <th style="width: 140px">Ações</th>
                     </tr>
                   </thead>
@@ -74,24 +75,26 @@
                       </td>
                       <td>
                         <?=$cliente['cpf']?>
+                      </td>      
+                      <td>
+                        <?=$cliente['nome']?>
+                      </td>                   
+                      <td>
+                        <?=$cliente['endereco'] .", nº ".$cliente['numero'] ?>
+                      </td>
+                         <td>
+                        <?=$cliente['cidade'] ."-".$cliente['estado'] ?>
                       </td>
                       <td>
-                        <span <?=$cliente['status']==1 ? 'class="label label-success">Disponível</span>' :
-                          'class="label label-danger">Ocupado</span>' ?>
-                      </td>
-                      <td>
-                        <?=$cliente['qnt_vagas']?>
-                      </td>
-                      <td>
-                        <span <?=$cliente['tipo']==1 ? 'class="label label-success">Padrão</span>' :
-                          'class="label label-warning">Mista</span>' ?>
+                        <span <?=$cliente['status']==1 ? 'class="label label-success">Ativo</span>' :
+                          'class="label label-danger">Inativo</span>' ?>
                       </td>
                       <td>
                         <a href="<?=base_url('clientes/editar/'.$cliente['id'])?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>
                           Editar</a>
 
                         <a href="#" data-toggle="modal" data-target="#delete-modal" data-customer="<?php echo $cliente['id'];?>"
-                          data-rota="<?php echo base_url('exluir-cliente/');?>" class="btn btn-danger btn-xs">
+                          data-rota="<?php echo base_url('cliente/excluir/');?>" class="btn btn-danger btn-xs">
                           <i class="fa fa-trash"></i> Excluir</a>
                       </td>
 

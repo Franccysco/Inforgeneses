@@ -27,7 +27,7 @@
             <div class="icon">
               <i class="fa fa-barcode text-center"></i>
             </div>
-            <a href="#" class="small-box-footer">Meus produtos <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?=base_url('produtos')?>" class="small-box-footer">Meus produtos <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

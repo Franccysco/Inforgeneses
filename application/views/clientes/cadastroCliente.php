@@ -15,6 +15,14 @@
     <!-- Main content -->
     <section class="content">
 
+        <?php if ($this->session->flashdata('error') == true): ?>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-times-circle"></i> Erros</h4>
+            <?php echo $this->session->flashdata('error'); ?>
+        </div>
+        <?php endif;?>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-success">
@@ -28,31 +36,35 @@
                             <hr> <label>Dados</label><br><br>
                             <div class="row col-md-12">
                                 <div class="form-group col-md-6">
-                                    <label>Nome:</label>
+                                    <label>*Nome:</label>
                                     <input type="text" class="form-control" name="nome" placeholder="Digite seu nome"
                                         value="<?=set_value('nome')?>" required>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label>CPF:</label>
-                                    <input type="text" class="form-control" name="cpf" placeholder="Digite o CPF"
+                                    <label>*CPF:</label>
+                                    <input type="text" class="form-control cpf" name="cpf" placeholder="Digite o CPF"
                                         value="<?=set_value('cpf')?>" required>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label>RG:</label>
-                                    <input type="text" class="form-control" name="rg" placeholder="Digite seu RG"
+                                    <label>*RG:</label>
+                                    <input type="text" class="form-control rg" name="rg" placeholder="Digite seu RG"
                                         value="<?=set_value('rg')?>" required>
                                 </div>
                             </div>
 
                             <div class="row col-md-12">
                                 <div class="form-group col-md-3">
-                                    <label>Renda:</label>
-                                    <input type="text" class="form-control" name="renda" placeholder="Digite sua renda"
-                                        value="<?=set_value('renda')?>" required>
+                                    <label>*Renda:</label>
+                                    <input type="text" class="form-control money" name="renda"
+                                        placeholder="Digite sua renda" value="<?=set_value('renda')?>" required>
                                 </div>
-                                
+
                                 <!-- status ativo do cliente ao cadastra-lo -->
                                 <input type="hidden" class="form-control" name="status" value="1">
+
+                                <!-- id  do usuario que cadastrou o produto-->
+                                <input type="hidden" class="form-control" name="usuarios_id"
+                                    value="<?php echo $this->session->userdata('usuarioLogado')->id;?>">
 
 
                             </div>
@@ -60,23 +72,23 @@
                                 <hr> <label>Endereço</label><br><br>
 
                                 <div class="form-group col-md-8">
-                                    <label>Rua:</label>
+                                    <label>*Rua:</label>
                                     <input type="text" class="form-control" name="endereco" placeholder="Digite sua rua"
                                         value="<?=set_value('endereco')?>" required>
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label>Numero:</label>
+                                    <label>*Numero:</label>
                                     <input type="text" class="form-control" name="numero"
                                         placeholder="Digite seu número" value="<?=set_value('numero')?>" required>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="despassword">Estado:</label>
+                                    <label for="despassword">*Estado:</label>
                                     <input type="text" class="form-control" name="estado"
                                         placeholder="Digite seu estado" value="<?=set_value('estado')?>" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label>Cidade:</label>
+                                    <label>*Cidade:</label>
                                     <input type="text" class="form-control" name="cidade"
                                         placeholder="Digite sua cidade" value="<?=set_value('cidade')?>" required>
                                 </div>

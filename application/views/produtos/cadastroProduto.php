@@ -15,6 +15,14 @@
     <!-- Main content -->
     <section class="content">
 
+     <?php if ($this->session->flashdata('error') == true): ?>
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-times-circle"></i> Erros</h4>
+      <?php echo $this->session->flashdata('error'); ?>
+    </div>
+    <?php endif;?>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-success">
@@ -33,12 +41,12 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>* Preço à vista</label>
-                                    <input type="text" class="form-control" max="45" name="preco_vista" placeholder="Digite o preço à vista"
+                                    <input type="text" class="form-control money"  name="preco_vista" placeholder="Digite o preço à vista"
                                         value="<?=set_value('preco_vista')?>" required>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>* Preço a prazo:</label>
-                                    <input type="text" class="form-control" name="preco_prazo" placeholder="Digite o preço a prazo"
+                                    <input type="text" class="form-control money" name="preco_prazo" placeholder="Digite o preço a prazo"
                                         value="<?=set_value('preco_prazo')?>" required>
                                 </div>
                             </div>
@@ -52,6 +60,8 @@
                                 
                                 <!-- status ativo do produto ao cadastra-lo -->
                                 <input type="hidden" class="form-control" name="status" value="1">
+                                <!-- id  do usuario que cadastrou o produto-->
+                                <input type="hidden" class="form-control" name="usuarios_id" value="<?php echo $this->session->userdata('usuarioLogado')->id;?>">
 
 
                             </div>
