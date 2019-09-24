@@ -10,9 +10,11 @@ class MY_Controller extends CI_Controller
 
     }
 
-    public function verify_login()
+    public function verifica_login()
     {
-       
+       if ($this->session->userdata("logado") == false) {
+           redirect(base_url('login'));
+       }
     }
 
     public function render_page($view, $data = null)

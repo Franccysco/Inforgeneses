@@ -55,11 +55,22 @@ $route['translate_uri_dashes'] = FALSE;
 
 //Login
 $route['login'] = 'login';
+$route['logout'] = 'login/logout';
+
+//Produtos
+$route['produtos'] = 'produto';
+$route['produtos/cadastro'] = 'produto/cadastro';
+$route['produtos/editar'] = 'produto/editar';
+
 
 //Usuários
 $route['usuarios'] = 'usuario';
 $route['usuarios/cadastro'] = 'usuario/cadastro';
-$route['usuarios/editar'] = 'usuario/editar';
+$route['usuarios/salvar'] = 'usuario/salvar';
+$route['usuarios/editar/(:num)'] = 'usuario/editar/$1';
+$route['usuario/atualizar'] = 'usuario/atualizar';
+$route['usuario/excluir/(:num)'] = 'usuario/excluir/$1';
+$route['usuario/atualizaSenha'] = 'usuario/atualizaSenha';
 
 
 //Clientes

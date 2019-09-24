@@ -9,7 +9,7 @@
             </div>
             <div class="pull-left info">
                 <p>
-                  Usuário
+                 <?php echo $this->session->userdata('usuarioLogado')->nome; ?>
                 </p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>

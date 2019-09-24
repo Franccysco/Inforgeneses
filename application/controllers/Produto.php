@@ -15,7 +15,7 @@ class Produto extends MY_Controller
     }
 
     /**
-     * Carrega a view para cadastro dos usuários
+     * Carrega a view para cadastro dos produtos
      */
     public function cadastro()
     {

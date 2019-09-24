@@ -1,18 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller
+class Home extends MY_Controller
 {
 
-   
     public function index()
     {
+        $this->verifica_login();
 
+        // Titulo da página
         $dados['titulo'] = 'Home';
-        $this->load->view('template/header', $dados);
-        $this->load->view('template/menu-lateral');
-        $this->load->view('home');
-        $this->load->view('template/footer');
+        // Carrega a view passando os dados do registro
+        $this->render_page('home', $dados);
 
     }
 }

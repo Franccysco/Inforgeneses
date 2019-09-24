@@ -15,6 +15,14 @@
     <!-- Main content -->
     <section class="content">
 
+    <?php if ($this->session->flashdata('error') == true): ?>
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-times-circle"></i> Erros</h4>
+      <?php echo $this->session->flashdata('error'); ?>
+    </div>
+    <?php endif;?>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-success">
@@ -23,21 +31,21 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="<?=base_url('usuario/salvar')?>" method="post">
+                    <form role="form" action="<?=base_url('usuarios/salvar')?>" method="post">
                         <div class="box-body">
                             <div class="row col-md-12">
                                 <div class="form-group col-md-6">
-                                    <label>Nome:</label>
+                                    <label>*Nome:</label>
                                     <input type="text" class="form-control" name="nome" placeholder="Digite seu nome"
                                         value="<?=set_value('nome')?>" required>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label>Matrícula:</label>
+                                    <label>*Matrícula:</label>
                                     <input type="text" class="form-control" name="matricula" placeholder="Digite sua matrícula"
                                         value="<?=set_value('matricula')?>" required>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label id="senha">Senha:</label>
+                                    <label id="senha">*Senha:</label>
                                     <input type="password" name="senha" class="form-control" placeholder="Senha do usuário" value="<?=set_value('senha')?>"
                                     required>
                                 </div>

@@ -13,7 +13,7 @@
                 <a  class="dropdown-toggle" data-toggle="dropdown" style="padding:10px; padding-top:15px;">
                     <img src="<?=base_url('assets/dist/img/user.png')?>" class="user-image" alt="User Image">
                     <span class="hidden-xs">
-                        Usuário sobrenome
+                        <?php echo $this->session->userdata('usuarioLogado')->nome; ?>
                     </span>
                 </a>
             </li>

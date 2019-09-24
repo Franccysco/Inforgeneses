@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sistema OrdemServico</title>
+    <title>Inforgeneses | <?php echo $titulo?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -47,20 +47,36 @@
   <div class="login-box-body">
     <p class="login-box-msg">Entre para iniciar sua sessão</p>
 
-    <form action="" method="post">
+    <?php if ($this->session->flashdata('error') == true): ?>
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-times-circle"></i> Erros</h4>
+        <?php echo $this->session->flashdata('error'); ?>
+      </div>
+      <?php endif;?>
+
+      <?php if ($this->session->flashdata('success') == true): ?>
+      <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-check-circle"></i> Sucesso</h4>
+        <?php echo $this->session->flashdata('success'); ?>
+      </div>
+      <?php endif;?>
+
+    <form action="<?=base_url("login")?>" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Matricula">
+        <input type="text" class="form-control" name="matricula" placeholder="Matricula">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Senha">
+        <input type="password" class="form-control" name="senha" placeholder="Senha">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         
         <!-- /.col -->
         <div class="col-xs-12">
-          <a href="<?=base_url()?>" type="submit" class="btn btn-primary btn-block btn-flat">Entrar</a>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
         </div>
         <!-- /.col -->
       </div>
@@ -77,16 +93,6 @@
 <script src="<?=base_url('assets/bower_components/jquery/dist/jquery.min.js')?>"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="<?=base_url('assets/bower_components/bootstrap/dist/js/bootstrap.min.js')?>"></script>
-<!-- iCheck -->
-<script src="<?=base_url('assets/plugins/iCheck/icheck.min.js')?>"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
-    });
-  });
-</script>
+
 </body>
 </html>

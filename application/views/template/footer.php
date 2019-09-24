@@ -15,10 +15,10 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4>Exluir item <i class="fa fa-trash"></i></h4>
+                <h4>Exluir dado! <i class="fa fa-trash"></i></h4>
             </div>
             <div class="modal-body">
-                <p>Deseja realmente excluir este item?</p>
+                <p>Deseja realmente excluir?</p>
             </div>
             <div class="modal-footer">
                 <a id="confirm" class="btn btn-danger" href="#">Sim</a>
@@ -82,8 +82,8 @@
 
 <!-- iCheck 1.0.1 -->
 <script src="<?=base_url('assets/')?>plugins/iCheck/icheck.min.js"></script>
-<script src="<?=base_url('assets/dist/js/excluir.js')?>"></script>
-<script src="<?=base_url('assets/dist/js/funcoes.js')?>"></script>
+<script src="<?=base_url('assets/dist/js/custom.js')?>"></script>
+
 
 <!-- DataTables -->
 <script src="<?=base_url('assets/')?>bower_components/datatables/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -131,86 +131,10 @@
         })
 
 
-        $('#example2').DataTable({
-
-            "autoWidth": true,
-            "fixedHeader": true,
-            'searching': false,
-            'paging': false,
-            'info': true,
-            dom: 'Bfrtip',
-            buttons: [{
-                    "extend": 'excelHtml5',
-                    "text": '<i class="fa fa-file-excel-o text-green"></i> Exportar EXCEL',
-                    "titleAttr": 'Excel'
-                },
-                {
-                    "extend": 'pdfHtml5',
-                    // "pageSize": 'A4',
-                    // "pageMargins": [150, 150, 150, 150],
-                    // "margin": [150, 150, 150, 150],
-                    "text": '<i class="fa fa-file-pdf-o text-red"></i> Exportar PDF',
-                    "titleAttr": 'PDF',
-
-                },
-                {
-                    "extend": 'csvHtml5',
-                    "text": '<i class="fa fa-file-text text-yellow"></i> Exportar CSV',
-                    "titleAttr": 'CSV'
-                },
-                {
-                    "extend": 'print',
-                    "text": '<i class="fa fa-print text-blue"></i> Imprimir',
-                    "titleAttr": 'Imprimir'
-
-                }
-            ],
-
-            "language": {
-                "sEmptyTable": "Nenhum registro encontrado",
-                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-            }
-
-        })
-
-        $('#etiqueta').DataTable({
-
-            "autoWidth": true,
-            "fixedHeader": true,
-            "ordering": false,
-            'searching': false,
-            'paging': false,
-            'info': false,
-            dom: 'Bfrtip',
-            buttons: [
-               
-                { 
-                    "extend": 'print',
-                    "text": '<i class="fa fa-print text-blue"></i> Imprimir',
-                    "titleAttr": 'Imprimir'
-                
-                }
-            ]
-
-            
-        })
+        
     })
 </script>
 
-<script>
-function cont(){
-   var conteudo = document.getElementById('print').innerHTML;
-   var rota = '<?php echo base_url('updatePalete/'.$palete_selecionado['id'].'/'.$doca_selecionada['id'])?>';
-   window.location.href = rota;
-   tela_impressao = window.open('about:blank');
-//    for (i = 0; i < qtdPedidos; i++) {
-   tela_impressao.document.write(conteudo);
-//    }
-   tela_impressao.window.print();
-   tela_impressao.window.close();
-  
-}
-</script>
 
 
 <script>
@@ -239,20 +163,7 @@ function cont(){
     })
 </script>
 
-<!-- <script>
-$(document).ready(function() { 
-window.location.href='#foo';
-});
-</script> -->
 
-<!-- <script type="text/javascript">
-jQuery(document).ready(function($) { 
-    $(".scroll").click(function(event){        
-        event.preventDefault();
-        $('html,body').animate({scrollTop:$(this.hash).offset().top}, 800);
-   });
-});
-</script> -->
 </body>
 
 </html>

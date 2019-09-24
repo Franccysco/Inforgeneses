@@ -3,16 +3,25 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Manter Usuarios
+      Manter Produtos
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?=base_url('')?>"><i class="fa fa-home"></i> Home</a></li>
-      <li class="active"><a href="<?=base_url('usuarios')?>">usuarios</a></li>
+      <li class="active"><a href="<?=base_url('produtos')?>">produtos</a></li>
     </ol>
   </section>
 
   <!-- Main content -->
   <section class="content">
+
+
+    <?php if ($this->session->flashdata('error') == true): ?>
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-times-circle"></i> Erros</h4>
+      <?php echo $this->session->flashdata('error');?>
+    </div>
+    <?php endif;?>
 
     <?php if ($this->session->flashdata('success') == true): ?>
     <div class="alert alert-success alert-dismissible">
@@ -21,12 +30,13 @@
       <?php echo $this->session->flashdata('success'); ?>
     </div>
     <?php endif;?>
+
  
         <div class="box box-defaut">
 
           <div class="box-header col-md-12">
-            <a href="<?=base_url('usuarios/cadastro')?>" class="btn btn-success pull-right">
-              <i class="fa fa-plus-circle"></i> Cadastrar usuario
+            <a href="<?=base_url('produtos/cadastro')?>" class="btn btn-success pull-right">
+              <i class="fa fa-plus-circle"></i> Cadastrar produto
             </a>
           </div>
 
@@ -37,49 +47,56 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Matricula</th>
-                      <th>Nome</th>
+                      <th>Código</th>
+                      <th>Preço à vista</th>
+                      <th>Preço a prazo</th>
+                      <th>Descrição</th>
                       <th>Status</th>
                       <th style="width: 140px">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
 
-                    <?php if ($usuarios == FALSE): ?>
+                    <?php if ($produtos == FALSE): ?>
                     <tr>
-                      <td colspan="6">
+                      <td colspan="7">
                         <div class="alert alert-warning alert-dismissible">
                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                          <h4><i class="icon fa fa-exclamation-circle"></i> Cadastre um usuario!</h4>
-                          Nenhum usuario encontrado!
+                          <h4><i class="icon fa fa-exclamation-circle"></i> Cadastre um produto!</h4>
+                          Nenhum produto encontrado!
                         </div>
                       </td>
                     </tr>
                     <?php else: ?>
-                    <?php foreach ($usuarios as $usuario){ ?>
+                    <?php foreach ($produtos as $produto){ ?>
                     <tr>
                       <td>
-                        <?=$usuario['id']?>
+                        <?=$produto['id']?>
                       </td>
                       <td>
-                        <?=$usuario['matricula']?>
+                        <?=$produto['preco_vista']?>
+                      </td>
+                       <td>
+                        <?=$produto['preco_prazo']?>
+                      </td>
+                       <td>
+                        <?=$produto['descricao']?>
                       </td>
                       <td>
-                        <?=$usuario['nome']?>
-                      </td>
+                        <span <?=$produto['status']==1 ? 'class="label label-success">Disponível</span>' :
+                          'class="label label-danger">Ocupado</span>' ?>
+                      </td>                                          
                       <td>
-                        <span <?=$usuario['status']==1 ? 'class="label label-success">Ativo</span>' :
-                          'class="label label-danger">Inativo</span>' ?>
-                      </td>                    
-                      <td>
-                        <a href="<?=base_url('usuarios/editar/'.$usuario['id'])?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>
+                        <a href="<?=base_url('produtos/editar/'.$produto['id'])?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>
                           Editar</a>
 
-                        <a href="#" data-toggle="modal" data-target="#delete-modal" data-customer="<?php echo $usuario['id'];?>"
-                          data-rota="<?php echo base_url('usuario/excluir/');?>" class="btn btn-danger btn-xs">
+                        <a href="#" data-toggle="modal" data-target="#delete-modal" data-customer="<?php echo $produto['id'];?>"
+                          data-rota="<?php echo base_url('exluir-produto/');?>" class="btn btn-danger btn-xs">
                           <i class="fa fa-trash"></i> Excluir</a>
                       </td>
+
                     </tr>
+
                     <?php } ?>
                     <?php endif; ?>
 
