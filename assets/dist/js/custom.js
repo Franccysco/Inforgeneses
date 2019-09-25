@@ -12,7 +12,7 @@ $('#delete-modal').on('show.bs.modal', function (event) {
 
 $(document).ready(function () {
     $("#nova_senha").keyup(checkPasswordMatch);
-    $$("#confirm_senha").keyup(checkPasswordMatch);
+    $("#confirm_senha").keyup(checkPasswordMatch);
 });
 function checkPasswordMatch(){
     var password = $("#nova_senha").val();
@@ -31,4 +31,8 @@ function checkPasswordMatch(){
     }
 
 }
+
+
+
+
 

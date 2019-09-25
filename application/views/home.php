@@ -57,7 +57,7 @@
             <div class="icon">
               <i class="fa fa-shopping-cart"></i>
             </div>
-            <a href="#" class="small-box-footer">Minhas Vendas <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?=base_url('vendas')?>" class="small-box-footer">Minhas Vendas <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

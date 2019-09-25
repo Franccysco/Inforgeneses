@@ -6,6 +6,8 @@ class Cliente extends MY_Controller
 
     public function index()
     {
+        $this->verifica_login();
+
 
         $dados['titulo'] = 'Clientes';
         $dados['clientes'] = $this->cliente_model->getAll();
@@ -19,6 +21,8 @@ class Cliente extends MY_Controller
      */
     public function cadastro()
     {
+        $this->verifica_login();
+
         // Titulo da página
         $dados['titulo'] = 'Clientes-cadastro';
         $this->render_page('clientes/cadastroCliente', $dados);
@@ -29,6 +33,8 @@ class Cliente extends MY_Controller
      */
     public function salvar()
     {
+        $this->verifica_login();
+
 
         // Executa o processo de validação do formulário
         $validacao = self::validar();
@@ -95,6 +101,8 @@ class Cliente extends MY_Controller
      */
     public function atualizar()
     {
+        $this->verifica_login();
+
         // Realiza o processo de validação dos dados
         $validacao = self::validar('update');
         // Verifica o cpf da validação do formulário

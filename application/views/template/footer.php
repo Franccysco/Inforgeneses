@@ -168,7 +168,7 @@
 
 <script>
     $(document).ready(function () {
-        $('.date').mask('11/11/1111');
+        $('.date').mask('00/00/0000');
        
         $('.date_time').mask('00/00/0000 00:00:00');
         $('.rg').mask('00.000.000-0');        
@@ -179,6 +179,101 @@
             reverse: true
         });
     });
+</script>
+
+
+
+<script>
+$(document).ready(function(){
+        
+        //Salvar venda
+        $('#btn_save').on('click',function(){
+            var produtos_id = $('#produtos_id').val();
+            var clientes_id = $('#clientes_id').val();
+            var quantidade  = $('#quantidade').val();
+            var valor_total  = $('#total_venda').val();
+            var usuarios_id  = $('#usuarios_id').val();
+            var forma_pagamento  = $('#forma_pagamento').val();
+            var status  = $('#status').val();
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo site_url('venda/salvar')?>",
+                dataType : "JSON",
+                data : {produtos_id:produtos_id , clientes_id:clientes_id, quantidade:quantidade,
+                        forma_pagamento:forma_pagamento, status:status, valor_total:valor_total, usuarios_id:usuarios_id
+                        },
+                success: function(data){          
+                                            
+                   if (data.msg_erros == null) {
+                        apagaForm();
+                       html = "<div class='alert alert-success alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button> <h4><i class='icon fa fa-check-circle'></i> Sucesso</h4>"+data.msg+"</div>"
+                   } else {
+                       html = "<div class='alert alert-danger alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button> <h4><i class='icon fa fa-times-circle'></i> Erros</h4>"+data.msg_erros+"</div>"
+                   }                                        
+                    $('#msg_div').html(html);
+                    
+                }
+            });
+            return false;
+        });
+ 
+        function apagaForm()
+        {
+            document.getElementById('form_vendas').reset();
+            $('#total').val("");
+
+        }         
+
+        //Valor total de acordo com a forma de pagamento
+        $('#forma_pagamento').on('click',function(){
+            var base_url_vista = '<?php echo base_url('venda/produtos_vista/') ?>';
+            var base_url_prazo = '<?php echo base_url('venda/produtos_prazo/') ?>';
+
+            var form_pagamento = $('#forma_pagamento').val();
+            var qtd = $('#quantidade').val();
+            var id_produto = $('#produtos_id').val();
+            var valor;
+
+            if (form_pagamento == 'DINHEIRO') {
+                
+             $.ajax({
+                type  : 'ajax',
+                url   : base_url_vista+id_produto,
+                async : true,
+                dataType : 'json',
+                success : function(data){
+                    valor = data;
+                    $('#total_venda').val(parseFloat((data*qtd).toFixed(2)));
+                }
+ 
+            });
+
+            } else {
+                
+                $.ajax({
+                    type  : 'ajax',
+                    url   : base_url_prazo+id_produto,
+                    async : true,
+                    dataType : 'json',
+                    success : function(data){ 
+                        valor = data;
+                        $('#total_venda').val(parseFloat((data*qtd).toFixed(2)));
+                    }
+    
+                });
+            }
+
+            $('#quantidade').on('keyup',function(){
+                        var qtd = $('#quantidade').val();
+                        var total = valor;                      
+                        
+                        $('#total_venda').val(parseFloat((total*qtd).toFixed(2)));
+                        
+            });
+            
+        });      
+    });
+
 </script>
 
 

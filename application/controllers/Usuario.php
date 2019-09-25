@@ -34,6 +34,8 @@ class Usuario extends MY_Controller
     public function salvar()
     {
 
+        $this->verifica_login();
+
         // Executa o processo de validação do formulário
         $validacao = self::validar();
         // Verifica o status da validação do formulário
@@ -92,6 +94,8 @@ class Usuario extends MY_Controller
      */
     public function atualizar()
     {
+        $this->verifica_login();
+
         // Realiza o processo de validação dos dados
         $validacao = self::validar('update');
         // Verifica o status da validação do formulário

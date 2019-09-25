@@ -59,7 +59,7 @@
 
                     <?php if ($clientes == FALSE): ?>
                     <tr>
-                      <td colspan="6">
+                      <td colspan="7">
                         <div class="alert alert-warning alert-dismissible">
                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                           <h4><i class="icon fa fa-exclamation-circle"></i> Cadastre um Cliente!</h4>
@@ -111,7 +111,6 @@
           </div>
 
         </div>
-
 
   </section>
   <!-- /.content -->

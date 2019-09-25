@@ -4,8 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Produto extends MY_Controller
 {
 
+   
+
     public function index()
     {
+
+        $this->verifica_login();
         // Titulo da página
         $dados['titulo'] = 'Produtos';
         // Recupera os produtos através do model
@@ -20,6 +24,8 @@ class Produto extends MY_Controller
      */
     public function cadastro()
     {
+        $this->verifica_login();
+
         // Titulo da página
         $dados['titulo'] = 'Produtos-cadastro';
         $this->render_page('produtos/cadastroProduto', $dados);
@@ -30,6 +36,8 @@ class Produto extends MY_Controller
      */
     public function salvar()
     {
+
+        $this->verifica_login();
 
         // Executa o processo de validação do formulário
         $validacao = self::validar();
@@ -93,6 +101,8 @@ class Produto extends MY_Controller
      */
     public function atualizar()
     {
+        $this->verifica_login();
+
         // Realiza o processo de validação dos dados
         $validacao = self::validar('update');
         // Verifica o preco_vista da validação do formulário

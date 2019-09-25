@@ -85,3 +85,15 @@ $route['cliente/atualizar'] = 'cliente/atualizar';
 $route['cliente/excluir/(:num)'] = 'cliente/excluir/$1';
 
 
+//vendas
+$route['vendas'] = 'venda';
+$route['venda/vendas'] = 'venda/todasVendas';
+$route['venda/produtos_vista/(:num)'] = 'venda/produtoPrecoVenda/$1';
+$route['venda/produtos_prazo/(:num)'] = 'venda/produtoPrecoPrazo/$1';
+$route['venda/salvar'] = 'venda/salvar';
+$route['venda/excluir'] = 'venda/excluir';
+
+
+
+
+

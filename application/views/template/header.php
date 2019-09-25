@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="<?=base_url('assets/bower_components/jvectormap/jquery-jvectormap.css')?>">
     <!-- Select2 -->
     <link rel="stylesheet" href="<?=base_url('assets/bower_components/select2/dist/css/select2.min.css')?>">
+    <link rel="stylesheet" href="<?=base_url('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')?>">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?=base_url('assets/dist/css/AdminLTE.min.css')?>">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
